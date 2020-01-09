@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 2e52f50bc2e261c41bbe9dddd3cc498f
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _NormalMap: {fileID: 2800000, guid: e9742c575b8f4644fb9379e7347ff62e, type: 3}
+  - _MainTexture: {fileID: 2800000, guid: a84c7a7a347c2bb4aa8416ed0cb6c7c6, type: 3}
+  - _EmissiveMap: {fileID: 2800000, guid: a84c7a7a347c2bb4aa8416ed0cb6c7c6, type: 3}
+  - _MAOSMap: {fileID: 2800000, guid: a84c7a7a347c2bb4aa8416ed0cb6c7c6, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
