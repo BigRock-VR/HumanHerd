@@ -180,7 +180,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22698287}
-  m_LocalRotation: {x: 0.12250962, y: 0.70372695, z: 0.12521245, w: -0.68853587}
+  m_LocalRotation: {x: 0.016622717, y: 0.982896, z: -0.11324763, w: 0.14427145}
   m_LocalPosition: {x: 6.4, y: 68.1, z: 161.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -554,7 +554,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308866876}
-  m_LocalRotation: {x: -0.085719734, y: -0.7003157, z: -0.08533065, w: 0.7035118}
+  m_LocalRotation: {x: 0.29116303, y: -0.64765054, z: 0.29493687, w: 0.6393631}
   m_LocalPosition: {x: 148, y: 207, z: 122.489944}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
@@ -915,6 +915,7 @@ GameObject:
   - component: {fileID: 643516824}
   - component: {fileID: 643516823}
   - component: {fileID: 643516822}
+  - component: {fileID: 643516826}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1006,6 +1007,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!95 &643516826
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643516821}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 759e634c482ad48438a3b486377886b1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &679791418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,6 +1728,98 @@ Transform:
   m_Father: {fileID: 1863936662}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
+--- !u!1 &1079263121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1079263122}
+  - component: {fileID: 1079263123}
+  - component: {fileID: 1079263125}
+  - component: {fileID: 1079263124}
+  m_Layer: 11
+  m_Name: GroundCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1079263122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079263121}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -173.68942, y: 25.5, z: 51.596313}
+  m_LocalScale: {x: 300.04825, y: 0, z: 300.04803}
+  m_Children: []
+  m_Father: {fileID: 1764940118}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1079263123
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079263121}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.000022888184, y: 0.000008316131, z: -0.00001144409}
+--- !u!23 &1079263124
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079263121}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 800ec33a9c0fe564b9b72cdd97dc8d9e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1079263125
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079263121}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1175499809
 GameObject:
   m_ObjectHideFlags: 0
@@ -2127,7 +2239,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519423197}
-  m_LocalRotation: {x: -0.003745054, y: 0.9846961, z: -0.1740669, w: 0.0077710575}
+  m_LocalRotation: {x: -0.0037450742, y: 0.9846961, z: -0.1740669, w: 0.0077710464}
   m_LocalPosition: {x: -0.6020609, y: 12.424998, z: 34.049995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2604,6 +2716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startGame: 32
+  canvasAnimator: {fileID: 643516826}
   _player: {fileID: 2487358658945844195, guid: 9067e3c961f0316429b3ccaac6fd0521, type: 3}
   _omini: {fileID: 6108134512605411082, guid: 0f29db1a1f271ba4aac5fbde4bc20de2, type: 3}
   _startSpawnPoint: {fileID: 2136107693}
@@ -2622,6 +2735,7 @@ MonoBehaviour:
   _cam1: {fileID: 1075009036}
   _cam2: {fileID: 308866876}
   _cam3: {fileID: 8296172668899516575}
+  vCam: {fileID: 3964119737198912514}
   _teleportSpawn: 0
 --- !u!4 &1713363046
 Transform:
@@ -2635,7 +2749,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1764940118}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1764940117
 GameObject:
@@ -2664,6 +2778,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1079263122}
   - {fileID: 1713363046}
   - {fileID: 1976776538}
   m_Father: {fileID: 0}
@@ -2877,7 +2992,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1764940118}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1976776539
 MonoBehaviour:
@@ -7993,6 +8108,7 @@ GameObject:
   - component: {fileID: 8017066921492740289}
   - component: {fileID: 8558517015988874995}
   - component: {fileID: 3681533802755079862}
+  - component: {fileID: 56639963551990601}
   m_Layer: 5
   m_Name: Piano 1
   m_TagString: Untagged
@@ -8000,6 +8116,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &56639963551990601
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56639963551990600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: 0.000020980835, y: 0.0000564456, z: -0.0000047683725}
 --- !u!4 &74671206811066716
 Transform:
   m_ObjectHideFlags: 0
@@ -8168,6 +8297,7 @@ GameObject:
   - component: {fileID: 7322834894501729345}
   - component: {fileID: 2308228967692604663}
   - component: {fileID: 1292027605995268864}
+  - component: {fileID: 326100418918045924}
   m_Layer: 5
   m_Name: Piano31
   m_TagString: Untagged
@@ -8175,6 +8305,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &326100418918045924
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326100418918045923}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.000016242266, z: -0.000023841858}
 --- !u!4 &345264921392842731
 Transform:
   m_ObjectHideFlags: 0
@@ -8214,6 +8357,7 @@ GameObject:
   - component: {fileID: 4822955120756421025}
   - component: {fileID: 7411123871706051952}
   - component: {fileID: 7377779975074917199}
+  - component: {fileID: 355091822862962287}
   m_Layer: 5
   m_Name: Piano16
   m_TagString: Untagged
@@ -8221,6 +8365,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &355091822862962287
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355091822862962286}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000032424927, y: 0.00001013279, z: -0.0000009536752}
 --- !u!4 &386013086244359038
 Transform:
   m_ObjectHideFlags: 0
@@ -8284,6 +8441,7 @@ GameObject:
   - component: {fileID: 1457743437560595721}
   - component: {fileID: 1867128399728516896}
   - component: {fileID: 7170854213008454451}
+  - component: {fileID: 399467782222820830}
   m_Layer: 5
   m_Name: Piano13
   m_TagString: Untagged
@@ -8291,6 +8449,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &399467782222820830
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399467782222820829}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: 0.0000133514395, y: 0.000004172325, z: -0.0000047683725}
 --- !u!33 &404069561585365940
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8317,6 +8488,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &443434480993751964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3754076207848762796}
+  - component: {fileID: 3964119737198912514}
+  m_Layer: 0
+  m_Name: VirtaulCamera_Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &448221694857472665
 GameObject:
   m_ObjectHideFlags: 0
@@ -8328,6 +8516,7 @@ GameObject:
   - component: {fileID: 857264936527492147}
   - component: {fileID: 8403349404156556086}
   - component: {fileID: 1761423678532002229}
+  - component: {fileID: 448221694857472666}
   m_Layer: 5
   m_Name: Piano15
   m_TagString: Untagged
@@ -8335,6 +8524,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &448221694857472666
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448221694857472665}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000032424927, y: 0.0000059604645, z: 0.000014305114}
 --- !u!23 &485166477474819264
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8386,7 +8588,7 @@ Transform:
   m_Children:
   - {fileID: 6468462734407495429}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 20, y: 90.00001, z: 0}
 --- !u!23 &583053455876844972
 MeshRenderer:
@@ -8723,6 +8925,7 @@ GameObject:
   - component: {fileID: 2057727591996314695}
   - component: {fileID: 5780393532517647428}
   - component: {fileID: 1972755431138488183}
+  - component: {fileID: 906746742503617689}
   m_Layer: 5
   m_Name: polySurface36
   m_TagString: Untagged
@@ -8730,6 +8933,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &906746742503617689
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906746742503617688}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -7760074845545069097, guid: 873946404ddde674785ee19056472e4a, type: 3}
 --- !u!4 &909274495737762288
 Transform:
   m_ObjectHideFlags: 0
@@ -8958,6 +9175,7 @@ GameObject:
   - component: {fileID: 7019547447148811452}
   - component: {fileID: 8131582009449731901}
   - component: {fileID: 1290288238780760558}
+  - component: {fileID: 1084571737276277701}
   m_Layer: 5
   m_Name: Piano9
   m_TagString: Untagged
@@ -8965,6 +9183,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &1084571737276277701
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084571737276277700}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.00006148219, z: -0.00000858307}
 --- !u!33 &1130259180215015788
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9002,6 +9233,7 @@ GameObject:
   - component: {fileID: 4715755008662316180}
   - component: {fileID: 6704262710322123393}
   - component: {fileID: 7087449837062305374}
+  - component: {fileID: 1145930280817553837}
   m_Layer: 5
   m_Name: Piano29
   m_TagString: Untagged
@@ -9009,6 +9241,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &1145930280817553837
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145930280817553836}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.000017136335, z: -0.00000858307}
 --- !u!23 &1157257668309219458
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9100,6 +9345,7 @@ GameObject:
   - component: {fileID: 5411498334179711176}
   - component: {fileID: 3793884547892439255}
   - component: {fileID: 7164974645832231005}
+  - component: {fileID: 1192595069019791456}
   m_Layer: 5
   m_Name: Piano5
   m_TagString: Untagged
@@ -9107,6 +9353,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &1192595069019791456
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192595069019791455}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000032424927, y: 0.000058621168, z: 0.000041007996}
 --- !u!1 &1233497770226738433
 GameObject:
   m_ObjectHideFlags: 0
@@ -9118,6 +9377,7 @@ GameObject:
   - component: {fileID: 1719590837213916184}
   - component: {fileID: 6831817873263847561}
   - component: {fileID: 7457484565853630038}
+  - component: {fileID: 1233497770226738434}
   m_Layer: 5
   m_Name: Piano19
   m_TagString: Untagged
@@ -9125,6 +9385,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &1233497770226738434
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233497770226738433}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000009536744, y: 0.000007897615, z: -0.0000009536752}
 --- !u!23 &1265351925787397313
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9286,6 +9559,7 @@ GameObject:
   - component: {fileID: 1795301770437569063}
   - component: {fileID: 3035508480087706894}
   - component: {fileID: 6709048641748888237}
+  - component: {fileID: 1318039156953211476}
   m_Layer: 5
   m_Name: Piano17
   m_TagString: Untagged
@@ -9293,6 +9567,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &1318039156953211476
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318039156953211475}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.000009685755, z: -0.0000009536752}
 --- !u!23 &1325125003064770722
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9350,6 +9637,7 @@ GameObject:
   - component: {fileID: 5456030654160127236}
   - component: {fileID: 7848241935709969866}
   - component: {fileID: 7237690374915063794}
+  - component: {fileID: 1399353014366546811}
   m_Layer: 5
   m_Name: Piano27
   m_TagString: Untagged
@@ -9357,6 +9645,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &1399353014366546811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399353014366546810}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.000018030405, z: -0.00000858307}
 --- !u!1 &1413481097115625373
 GameObject:
   m_ObjectHideFlags: 0
@@ -9462,6 +9763,7 @@ GameObject:
   - component: {fileID: 9093704225864471971}
   - component: {fileID: 8815311742369149070}
   - component: {fileID: 3190387843017150405}
+  - component: {fileID: 1418986689796394413}
   m_Layer: 5
   m_Name: Piano22
   m_TagString: Untagged
@@ -9469,6 +9771,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &1418986689796394413
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418986689796394412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.00001296401, z: -0.00000858307}
 --- !u!4 &1456492544898341939
 Transform:
   m_ObjectHideFlags: 0
@@ -9762,6 +10077,7 @@ GameObject:
   - component: {fileID: 734105959559601523}
   - component: {fileID: 3292864876186780358}
   - component: {fileID: 696131648632394312}
+  - component: {fileID: 1756270858861968500}
   m_Layer: 5
   m_Name: Piano8
   m_TagString: Untagged
@@ -9769,6 +10085,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &1756270858861968500
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756270858861968499}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.000061929226, z: -0.000011444093}
 --- !u!1 &1757521071187759942
 GameObject:
   m_ObjectHideFlags: 0
@@ -10045,6 +10374,33 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2004213082896413914
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151167546843711657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 10
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 3
+  m_VerticalDamping: 3
+  m_ScreenX: 0.5
+  m_ScreenY: 0.5
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
 --- !u!4 &2021851387330770028
 Transform:
   m_ObjectHideFlags: 0
@@ -10534,6 +10890,7 @@ GameObject:
   - component: {fileID: 3253479394419757978}
   - component: {fileID: 7653841936839071859}
   - component: {fileID: 8285998748884299879}
+  - component: {fileID: 2484690136265840450}
   m_Layer: 5
   m_Name: Piano11
   m_TagString: Untagged
@@ -10541,6 +10898,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &2484690136265840450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2484690136265840449}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.00006058812, z: -0.000019073486}
 --- !u!1 &2502361481073761303
 GameObject:
   m_ObjectHideFlags: 0
@@ -10957,6 +11327,7 @@ GameObject:
   - component: {fileID: 7958965469315033544}
   - component: {fileID: 6152908195858566836}
   - component: {fileID: 1418334505898388726}
+  - component: {fileID: 2947945999677083218}
   m_Layer: 5
   m_Name: Piano6
   m_TagString: Untagged
@@ -10964,6 +11335,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &2947945999677083218
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2947945999677083217}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000032424927, y: 0.00006279349, z: -0.0000009536752}
 --- !u!4 &2956799808495148402
 Transform:
   m_ObjectHideFlags: 0
@@ -16024,6 +16408,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3189536140736656177
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151167546843711657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &3190387843017150405
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16411,7 +16807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &3540864267272795464
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16652,6 +17048,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!4 &3754076207848762796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443434480993751964}
+  m_LocalRotation: {x: 0, y: 0.9320738, z: -0.36226863, w: 0}
+  m_LocalPosition: {x: 0, y: 81, z: 83}
+  m_LocalScale: {x: 1.200001, y: 1.2, z: 1.200001}
+  m_Children:
+  - {fileID: 5586377222177041490}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 45.000004, y: 180, z: 0}
 --- !u!23 &3764070192726676204
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16822,6 +17233,41 @@ Transform:
   m_Father: {fileID: 7397753556523838543}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3964119737198912514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443434480993751964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 1
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
+  m_Lens:
+    FieldOfView: 40
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    LensShift: {x: 0, y: 0}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 5586377222177041490}
 --- !u!4 &3985298380601159341
 Transform:
   m_ObjectHideFlags: 0
@@ -22897,6 +23343,7 @@ GameObject:
   - component: {fileID: 6464993615158463003}
   - component: {fileID: 1514624036378058715}
   - component: {fileID: 1011339210679820660}
+  - component: {fileID: 4089319217495139648}
   m_Layer: 5
   m_Name: Piano2
   m_TagString: Untagged
@@ -22904,6 +23351,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &4089319217495139648
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4089319217495139647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.0000019073493, y: 0.000057309866, z: 0.000018119812}
 --- !u!1 &4092703232339028947
 GameObject:
   m_ObjectHideFlags: 0
@@ -22915,6 +23375,7 @@ GameObject:
   - component: {fileID: 386013086244359038}
   - component: {fileID: 7348221218823069188}
   - component: {fileID: 643148226744183951}
+  - component: {fileID: 4092703232339028948}
   m_Layer: 5
   m_Name: Piano10
   m_TagString: Untagged
@@ -22922,6 +23383,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &4092703232339028948
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4092703232339028947}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: 0.000005722045, y: 0.000061035156, z: -0.000006675721}
 --- !u!33 &4093112163252558987
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -22959,6 +23433,7 @@ GameObject:
   - component: {fileID: 7941467967625367615}
   - component: {fileID: 1044392671909201426}
   - component: {fileID: 5976667467473514986}
+  - component: {fileID: 4112222755886577179}
   m_Layer: 5
   m_Name: Piano1
   m_TagString: Untagged
@@ -22966,6 +23441,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &4112222755886577179
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4112222755886577178}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: 0.0000133514395, y: 0.00005686283, z: 0.0000066757193}
 --- !u!1 &4118667052135168342
 GameObject:
   m_ObjectHideFlags: 0
@@ -22978,6 +23466,7 @@ GameObject:
   - component: {fileID: 1910510634784705566}
   - component: {fileID: 943925870244947412}
   - component: {fileID: 4118667052135168343}
+  - component: {fileID: 4118667052135168344}
   m_Layer: 5
   m_Name: CityRoad
   m_TagString: Untagged
@@ -23014,6 +23503,19 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 83640d94116e7704cbdb6b1046d0d772, type: 2}
+--- !u!65 &4118667052135168344
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4118667052135168342}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 300.00006, y: 0.0000060017037, z: 300}
+  m_Center: {x: -0.000022888184, y: 0.000008316131, z: -0.00001144409}
 --- !u!4 &4133867238087814728
 Transform:
   m_ObjectHideFlags: 0
@@ -23107,6 +23609,7 @@ GameObject:
   - component: {fileID: 5626818205014188252}
   - component: {fileID: 6221456212932448122}
   - component: {fileID: 126322672528646722}
+  - component: {fileID: 4244848365145922268}
   m_Layer: 5
   m_Name: Piano
   m_TagString: Untagged
@@ -23114,6 +23617,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &4244848365145922268
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4244848365145922267}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 70.8, y: 0.0000014162323, z: 70.781944}
+  m_Center: {x: -0.000034332275, y: 0.00006795908, z: -0.000011444091}
 --- !u!33 &4263324511270462231
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -28410,6 +28926,7 @@ GameObject:
   - component: {fileID: 7927171137480782704}
   - component: {fileID: 953847403674452310}
   - component: {fileID: 4971414516899589922}
+  - component: {fileID: 4830988472757876702}
   m_Layer: 5
   m_Name: Piano30
   m_TagString: Untagged
@@ -28417,6 +28934,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &4830988472757876702
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830988472757876701}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.0000019073493, y: 0.000016719103, z: -0.000023841858}
 --- !u!33 &4869053526720390649
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -28440,7 +28970,7 @@ Transform:
   - {fileID: 5200003668988690845}
   - {fileID: 2136107693}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 18.698}
 --- !u!1 &4913770628446164944
 GameObject:
@@ -28509,6 +29039,7 @@ GameObject:
   - component: {fileID: 2672089178629989060}
   - component: {fileID: 5954084268776785434}
   - component: {fileID: 2997656004994954540}
+  - component: {fileID: 4940487650718907405}
   m_Layer: 5
   m_Name: Piano24
   m_TagString: Untagged
@@ -28516,6 +29047,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &4940487650718907405
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4940487650718907404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000032424927, y: 0.00001385808, z: -0.0000009536752}
 --- !u!23 &4971414516899589922
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28639,7 +29183,7 @@ Transform:
   - {fileID: 2282550295690300228}
   - {fileID: 1519423198}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &5019526106279070778
 GameObject:
@@ -29240,6 +29784,7 @@ GameObject:
   - component: {fileID: 4298155159594444553}
   - component: {fileID: 4869053526720390649}
   - component: {fileID: 1265351925787397313}
+  - component: {fileID: 5534270740895144979}
   m_Layer: 5
   m_Name: Piano12
   m_TagString: Untagged
@@ -29247,6 +29792,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &5534270740895144979
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5534270740895144978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: 0.0000133514395, y: 0.0000037252903, z: -0.000010490418}
 --- !u!33 &5547536335181856106
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -29286,6 +29844,20 @@ Transform:
   - {fileID: 6579100912889102863}
   m_Father: {fileID: 2520804083506458179}
   m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &5586377222177041490
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151167546843711657}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.308779, y: -4.8616033, z: -1.5766406}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3754076207848762796}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5608347463729994661
 Transform:
@@ -29370,6 +29942,7 @@ GameObject:
   - component: {fileID: 2889777257479083948}
   - component: {fileID: 4362183001205809972}
   - component: {fileID: 4922795556484893847}
+  - component: {fileID: 5697949492797341391}
   m_Layer: 5
   m_Name: Piano18
   m_TagString: Untagged
@@ -29377,6 +29950,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &5697949492797341391
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697949492797341390}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.0000019073493, y: 0.00000834465, z: -0.00000858307}
 --- !u!23 &5699797056666629057
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29740,6 +30326,7 @@ GameObject:
   - component: {fileID: 4555095396096914419}
   - component: {fileID: 1646887250544794298}
   - component: {fileID: 7330049437739517680}
+  - component: {fileID: 5993449941725199974}
   m_Layer: 5
   m_Name: Piano28
   m_TagString: Untagged
@@ -29747,6 +30334,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &5993449941725199974
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993449941725199973}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.00001758337, z: 0.0000066757193}
 --- !u!4 &6080400672348942749
 Transform:
   m_ObjectHideFlags: 0
@@ -29868,6 +30468,25 @@ Transform:
   m_Father: {fileID: 6080400672348942749}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6151167546843711657
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5586377222177041490}
+  - component: {fileID: 3189536140736656177}
+  - component: {fileID: 2004213082896413914}
+  - component: {fileID: 7243435149073647814}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!33 &6152908195858566836
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -35698,6 +36317,7 @@ GameObject:
   - component: {fileID: 6120038711965464352}
   - component: {fileID: 6340103613591826526}
   - component: {fileID: 7043153523315543686}
+  - component: {fileID: 6535541109833660037}
   m_Layer: 5
   m_Name: polySurface38
   m_TagString: Untagged
@@ -35705,6 +36325,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &6535541109833660037
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535541109833660036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 7479997029363590899, guid: 873946404ddde674785ee19056472e4a, type: 3}
 --- !u!4 &6548007972580183442
 Transform:
   m_ObjectHideFlags: 0
@@ -35974,6 +36608,7 @@ GameObject:
   - component: {fileID: 5084386990308615260}
   - component: {fileID: 2433565629645493806}
   - component: {fileID: 5231424249316344840}
+  - component: {fileID: 6825682222493913936}
   m_Layer: 5
   m_Name: Piano4
   m_TagString: Untagged
@@ -35981,6 +36616,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &6825682222493913936
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6825682222493913935}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.000058203936, z: 0.000029563904}
 --- !u!33 &6831817873263847561
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -41271,6 +41919,28 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &7243435149073647814
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151167546843711657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BindingMode: 0
+  m_FollowOffset: {x: 0, y: 76, z: 83}
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
 --- !u!1 &7284631028895425156
 GameObject:
   m_ObjectHideFlags: 0
@@ -41282,6 +41952,7 @@ GameObject:
   - component: {fileID: 8779402547066722500}
   - component: {fileID: 6887867940259612524}
   - component: {fileID: 5511695175682951054}
+  - component: {fileID: 7284631028895425157}
   m_Layer: 5
   m_Name: Piano26
   m_TagString: Untagged
@@ -41289,6 +41960,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &7284631028895425157
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7284631028895425156}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000062942505, y: 0.000018447638, z: -0.00000858307}
 --- !u!1 &7286226451334342566
 GameObject:
   m_ObjectHideFlags: 0
@@ -41402,6 +42086,7 @@ GameObject:
   - component: {fileID: 7538357749989292036}
   - component: {fileID: 8766369651092321165}
   - component: {fileID: 4499779339199959917}
+  - component: {fileID: 7364975497843918976}
   m_Layer: 5
   m_Name: Piano3
   m_TagString: Untagged
@@ -41409,6 +42094,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &7364975497843918976
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7364975497843918975}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.0000577569, z: 0.000018119812}
 --- !u!23 &7371706619753154386
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41596,6 +42294,7 @@ GameObject:
   - component: {fileID: 6512753591899765887}
   - component: {fileID: 5647012323454930844}
   - component: {fileID: 5389205447082140599}
+  - component: {fileID: 7414866840302035382}
   m_Layer: 5
   m_Name: Piano25
   m_TagString: Untagged
@@ -41603,6 +42302,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &7414866840302035382
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7414866840302035381}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000062942505, y: 0.000014305115, z: -0.0000009536752}
 --- !u!1 &7419146877100744446
 GameObject:
   m_ObjectHideFlags: 0
@@ -41688,6 +42400,7 @@ GameObject:
   - component: {fileID: 6151134883970796346}
   - component: {fileID: 1620255190461600990}
   - component: {fileID: 7379243868413566620}
+  - component: {fileID: 7474259486374127610}
   m_Layer: 5
   m_Name: Piano21
   m_TagString: Untagged
@@ -41695,6 +42408,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &7474259486374127610
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474259486374127609}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: 0.000005722045, y: 0.000012516975, z: -0.00000858307}
 --- !u!23 &7492244174837747854
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42080,6 +42806,7 @@ GameObject:
   - component: {fileID: 74671206811066716}
   - component: {fileID: 7292093735282548323}
   - component: {fileID: 7833624934623881521}
+  - component: {fileID: 7901916061249205843}
   m_Layer: 5
   m_Name: Piano7
   m_TagString: Untagged
@@ -42087,6 +42814,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &7901916061249205843
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7901916061249205842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.00006234646, z: -0.000013351441}
 --- !u!23 &7914148877052063410
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42308,6 +43048,7 @@ GameObject:
   - component: {fileID: 6446455249746196223}
   - component: {fileID: 310605000394194911}
   - component: {fileID: 1803145307935424769}
+  - component: {fileID: 8230085690678045137}
   m_Layer: 5
   m_Name: Piano23
   m_TagString: Untagged
@@ -42315,6 +43056,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &8230085690678045137
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8230085690678045136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.000013411045, z: -0.0000009536752}
 --- !u!4 &8276916830807712530
 Transform:
   m_ObjectHideFlags: 0
@@ -42452,7 +43206,7 @@ Transform:
   - {fileID: 4575226012317876041}
   - {fileID: 2956883965047240788}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &8354821083329014801
 ParticleSystemRenderer:
@@ -47480,6 +48234,7 @@ GameObject:
   - component: {fileID: 8512749756772663833}
   - component: {fileID: 5875112673592534094}
   - component: {fileID: 2224825622927149341}
+  - component: {fileID: 8653927080765532426}
   m_Layer: 5
   m_Name: Piano14
   m_TagString: Untagged
@@ -47487,6 +48242,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &8653927080765532426
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8653927080765532425}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.0000054836273, z: -0.0000009536752}
 --- !u!1 &8656118442718449310
 GameObject:
   m_ObjectHideFlags: 0
@@ -47640,6 +48408,7 @@ GameObject:
   - component: {fileID: 3251196335134499986}
   - component: {fileID: 4263324511270462231}
   - component: {fileID: 2476216844481984207}
+  - component: {fileID: 8827083472276876486}
   m_Layer: 5
   m_Name: Piano20
   m_TagString: Untagged
@@ -47647,6 +48416,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &8827083472276876486
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827083472276876485}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.000006, y: 0.00000062997276, z: 29.999998}
+  m_Center: {x: -0.000017166138, y: 0.000012069941, z: -0.00000858307}
 --- !u!1 &8878622242693726349
 GameObject:
   m_ObjectHideFlags: 0

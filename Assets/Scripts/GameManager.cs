@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public KeyCode _startGame;
 
+    [SerializeField]
+    Animator canvasAnimator;
     [SerializeField]
     public GameObject _player;
     [SerializeField]
@@ -23,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     GameObject[] _spawnPoints;
     int _spawnCounter;
+    bool gameStarted;
 
     //ScoreValue
     public int _humanInScene, _humanPickedUp;
@@ -41,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     //Camere
     public GameObject _cam1, _cam2, _cam3;
+    [SerializeField]
+    CinemachineVirtualCamera vCam;
     float _counter;
     bool _startCounter;
     private bool _soloUno;
@@ -71,6 +77,30 @@ public class GameManager : MonoBehaviour
         _humanInScene = _humans.Count;
         GameTimer();
         GameManagement();
+    }
+
+    //testsheep
+    public Transform ClosestOmino(Transform from)
+    {            
+        // remember 5 november
+        var minDistance = float.MaxValue;
+        Transform humanInst = from;
+        for (int i = 0; i <= _humans.Count-1; i++)
+        {
+            float dist = Vector3.Distance(_humans[i].transform.position, from.position);
+            
+            if (dist < minDistance)
+            {
+                minDistance = dist;
+               humanInst = _humans[i].transform;
+            }
+            if(i==_humans.Count-1)
+            {
+                print("distanza winner : " + dist);
+                return humanInst;
+            }
+        }
+        return null;
     }
 
     void GameTimer()
@@ -106,12 +136,26 @@ public class GameManager : MonoBehaviour
 
     void GameManagement()
     {
-        if (Input.GetKeyDown(_startGame))
+        if (Input.GetKeyDown(_startGame) && !gameStarted)
         {
+            print("space");
+            gameStarted = true;
+            _cam1.SetActive(false);
+            _cam2.SetActive(false);
+            _cam3.SetActive(false);
+            _spaceShip.GetComponent<Animator>().SetTrigger("SkipStart");
+            vCam.gameObject.SetActive(true);
+            SpawnPlayer();
+        }
+        else if (Input.anyKey && !Input.GetKey(_startGame) && !gameStarted)
+        {
+            print("any");
+            gameStarted = true;
             _cam1.SetActive(false);
             _startCounter = true;
             _spaceShip.SetActive(true);
             _spaceShip.GetComponent<Animator>().SetBool("StartGame", true);
+            canvasAnimator.SetTrigger("StartGame");
         }
         if (_startCounter && !_soloUno)
         {
@@ -134,10 +178,17 @@ public class GameManager : MonoBehaviour
         {
             _cam3.SetActive(false);
             _playerSpawned = false;
-            Instantiate(_player, _startSpawnPoint.position, _startSpawnPoint.rotation);
-            _timerStarts = true;
-            Time.timeScale = 1;
+            SpawnPlayer();
         }
+    }
+
+    void SpawnPlayer()
+    {
+        var playerInstance = Instantiate(_player, _startSpawnPoint.position, _startSpawnPoint.rotation);
+        vCam.Follow = playerInstance.transform;
+        vCam.LookAt = playerInstance.transform.GetChild(0);
+        _timerStarts = true;
+        Time.timeScale = 1;
     }
     void StartGame()
     {

@@ -21,6 +21,10 @@ public class SheepMovement : MonoBehaviour
     public float _multiplier = 1f;
     private bool _coroutine;
 
+    // Test Sheep
+    [SerializeField]
+    bool doSheep;
+
     //Variabili Panino
     List<GameObject> Panino = new List<GameObject>();
 
@@ -28,9 +32,11 @@ public class SheepMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        doSheep = true;
         _player = GameObject.FindGameObjectWithTag("Player");
         _agent = GetComponent<NavMeshAgent>();
         PopulateArray();
+        StartCoroutine("OminiHandler");
     }
 
     // Update is called once per frame
@@ -47,26 +53,30 @@ public class SheepMovement : MonoBehaviour
             _player = GameObject.FindGameObjectWithTag("Player");
         }
         
-        if (_player != null)
+        if (_player != null && !doSheep)
         {
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
             //RunAWAY
             if (_distance < _enemyDistanceRun && !GameManager._gm._follow)
             {
+                
                 if (_agent.enabled == true)
                 {
                     _counter = 0;
-                    StopAllCoroutines();
+                    StopCoroutine("DeathTime");
                     if (_distance < _enemyCriticDistance)
                     {
                         _agent.speed = _player.GetComponent<PlayerController>()._movSpeed * 2f;
                         _agent.acceleration = 15f;
+                        doSheep = true;
                     }
                     if (_distance > _enemyCriticDistance)
                     {
                         _agent.speed = _player.GetComponent<PlayerController>()._movSpeed;
                         _agent.acceleration = 7f;
+                        doSheep = false;
+
                     }
                     Vector3 dirToPlayer = transform.position - _player.transform.position;
                     Vector3 newPos = transform.position + dirToPlayer;
@@ -75,10 +85,11 @@ public class SheepMovement : MonoBehaviour
             }
             if (_distance < _enemyDistanceRun && GameManager._gm._follow)
             {
+
                 if (_agent.enabled == true)
                 {
                     _counter = 0;
-                    StopAllCoroutines();
+                    StopCoroutine("DeathTime");
 
                     _agent.speed = _player.GetComponent<PlayerController>()._movSpeed * 2f;
                     _agent.acceleration = 15f;
@@ -145,6 +156,27 @@ public class SheepMovement : MonoBehaviour
             yield return null;
         }
     }
+
+    //testsheep
+    IEnumerator OminiHandler()
+    {
+        yield return new WaitForSeconds(1);
+        print("enum working");
+        if(doSheep)
+        {
+            GameManager._gm.ClosestOmino(transform);
+            StartCoroutine("OminiHandler");
+            doSheep = false;
+            print("if running, should regroup");
+        }
+        else
+        {
+            print("still checking");
+            StartCoroutine("OminiHandler");
+        }
+        yield return null;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Beacon"))

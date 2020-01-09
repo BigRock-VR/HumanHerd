@@ -11,6 +11,12 @@ public class PlayerController : MonoBehaviour
     public float _movSpeed = 8f;
     [SerializeField]
     private float _rotSpeed = 150f;
+    [SerializeField]
+    public float _runInertiaMultiplier = 2f;
+    [SerializeField]
+    public float _movSpeedMultiplier = 0.2f;
+    [SerializeField]
+    private float maxSpeed = 20;
 
     //Inputs Variables
     public KeyCode _pickUp;
@@ -20,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool _sprintBool;
     private bool _inside;
     private bool _picked;
+    private bool isRunning;
 
     //Panino
     private int _powerUpType;
@@ -32,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public float _counter;
     public float _timeMultiplier;
     public bool _canRun = true;
+    private Rigidbody rb;
 
     //AirBlobVariables
     private float _lerpFly;
@@ -47,9 +55,12 @@ public class PlayerController : MonoBehaviour
     public GameObject _spaceShip;
 
 
+
+
     // Start is called before the first frame update
     void Start()
     {
+        rb = transform.GetComponent<Rigidbody>();
         _powerUps = new GameObject[2];
         _spaceShip = GameObject.FindGameObjectWithTag("SpaceShip");
         PopulateArray();
@@ -73,40 +84,78 @@ public class PlayerController : MonoBehaviour
         _hMove = Input.GetAxis("Horizontal");
         _vMove = Input.GetAxis("Vertical");
 
-        transform.Rotate(0f, _hMove * _rotSpeed * Time.deltaTime, 0f);
-        transform.Translate(0f, 0f, _vMove * _movSpeed * Time.deltaTime);
+        //transform.Rotate(0f, _hMove * _rotSpeed * Time.deltaTime, 0f);
+        //transform.Translate(0f, 0f, _vMove * _movSpeed * _movSpeedMultiplier * Time.deltaTime);
+
+
+        if(_hMove != 0)
+        {
+            transform.Translate(Vector3.right * _hMove * _movSpeed / 100);
+        }
+        //Sprint inertia
+        if(_vMove != 0)
+        {
+            var dir = transform.TransformDirection(Vector3.forward);
+            float modifier;
+
+            if(!isRunning)
+            {
+                modifier = _movSpeedMultiplier;
+            }
+            else
+            {
+                modifier = _runInertiaMultiplier;
+            }
+
+            rb.AddForce(dir * _vMove * _movSpeed / modifier, ForceMode.Impulse);
+        }
+        //Character AIM at mouse
+        int mask = ~(1 << 11);
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, mask);
+        transform.LookAt(hit.point);
+
+
 
         if (_sprintBool && _canRun && _vMove !=0 )
         {
-            _counter += Time.deltaTime * _timeMultiplier;
-            _movSpeed += 0.08f;
+            isRunning = true;
 
-            _lerpRot = _counter.Remap(0f, 3f, 0f, 1f);
-            var x = Mathf.Lerp(0, 40, _lerpRot);
-            transform.GetChild(0).transform.localRotation = Quaternion.Euler (x, transform.rotation.y, transform.rotation.z);
-
-            if (_counter >= 3f)
+            if(rb.velocity.magnitude <= maxSpeed)
             {
-                _canRun = false;
+                
+                _counter += Time.deltaTime * _timeMultiplier;
+                _movSpeed += 0.08f;
+
+                //_lerpRot = _counter.Remap(0f, 3f, 0f, 1f);
+                //var x = Mathf.Lerp(0, 40, _lerpRot);
+                //transform.GetChild(0).transform.localRotation = Quaternion.Euler (x, transform.rotation.y, transform.rotation.z);
+
+                if (_counter >= 3f)
+                {
+                    _canRun = false;
+                }
             }
         }
-        if ( !_sprintBool || !_canRun || _vMove == 0)
+        if (!_sprintBool || !_canRun || _vMove == 0)
         {
-            _counter -= Time.deltaTime * _timeMultiplier;
-            _movSpeed -= 0.08f;
+            isRunning = false;
 
-            if (_counter > 0)
-            {
-                _lerpRot = _counter.Remap(0f, 3f, 0f, 1f);
-                var x = Mathf.Lerp(0, 40, _lerpRot);
-                transform.GetChild(0).transform.localRotation = Quaternion.Euler(x, transform.rotation.y, transform.rotation.z);
-            }
-            if (_counter <= 0f)
-            {
-                _movSpeed = 5f;
-                _counter = 0f;
-                _canRun = true;
-            }
+                _counter -= Time.deltaTime * _timeMultiplier;
+                _movSpeed -= 0.08f;
+
+                if (_counter > 0)
+                {
+                    //_lerpRot = _counter.Remap(0f, 3f, 0f, 1f);
+                    //var x = Mathf.Lerp(0, 40, _lerpRot);
+                    //transform.GetChild(0).transform.localRotation = Quaternion.Euler(x, transform.rotation.y, transform.rotation.z);
+                }
+                if (_counter <= 0f)
+                {
+                    _movSpeed = 5f;
+                    _counter = 0f;
+                    _canRun = true;
+                }
+            
         }
     }
 
