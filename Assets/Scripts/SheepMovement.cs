@@ -134,7 +134,6 @@ public class SheepMovement : MonoBehaviour
     {
         if (GameManager._gm._timerStarts)
         {
-            print("Coroutine parte");
             yield return new WaitForSeconds(15);
             GameManager._gm._humans.RemoveAt(0);
             _coroutine = false;
@@ -142,7 +141,6 @@ public class SheepMovement : MonoBehaviour
         }
         else
         {
-            print("Coroutine attende");
             _coroutine = false;
             yield return null;
         }

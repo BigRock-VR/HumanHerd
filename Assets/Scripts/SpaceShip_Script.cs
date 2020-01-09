@@ -28,7 +28,7 @@ public class SpaceShip_Script : MonoBehaviour
 
     void GameStarts()
     {
-        if (_counter < 10 && GameManager._gm._timerStarts)
+        if (_counter < 10 && GameManager._gm._teleportSpawn)
         {
             _teleport.SetActive(true);
             Mathf.Clamp(_counter, 0f, 10f);
@@ -44,7 +44,7 @@ public class SpaceShip_Script : MonoBehaviour
         {
             _teleport.SetActive(false);
             _lerpCounter += Time.deltaTime;
-            if (_lerpCounter >= 8)
+            if (_lerpCounter >= 2)
             {
                 _uiController.GetComponent<UIController>()._gameOverUI.SetActive(false);
                 _ShipDeparture.SetBool("StartAnimation", true);

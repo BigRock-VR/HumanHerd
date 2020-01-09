@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
     bool _startCounter;
     private bool _soloUno;
 
+    public bool _teleportSpawn;
+
     private void Awake()
     {
         if (_gm == null)
@@ -56,8 +58,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-        
-        
     }
     //GameManagerEndThings
     void Start()
@@ -110,17 +110,18 @@ public class GameManager : MonoBehaviour
         {
             _cam1.SetActive(false);
             _startCounter = true;
+            _spaceShip.SetActive(true);
             _spaceShip.GetComponent<Animator>().SetBool("StartGame", true);
-
         }
         if (_startCounter && !_soloUno)
         {
             _counter += Time.deltaTime;
-            if(_counter>= 15)
+            if(_counter>= 9)
             {
                 _cam2.SetActive(false);
                 _cam3.SetActive(true);
-                if(_counter >= 20)
+                _teleportSpawn = true;
+                if(_counter >= 15)
                 {
                     _soloUno = true;
                     Time.timeScale = 0;
@@ -141,7 +142,6 @@ public class GameManager : MonoBehaviour
     void StartGame()
     {
         _cam1.SetActive(true);
-        
     }
 
     IEnumerator SpawnOmini()

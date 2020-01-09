@@ -165,6 +165,18 @@ public class PlayerController : MonoBehaviour
                 _paninoTimer = 0f;
                 GameManager._gm._follow = false;
             }
+        }if (GameManager._gm._follow && _powerUpType == 1)
+        {
+
+            _powerUps[1].SetActive(true);
+            _paninoTimer += Time.deltaTime;
+
+            if(_paninoTimer >= 10)
+            {
+                _powerUps[1].SetActive(false);
+                _paninoTimer = 0f;
+                GameManager._gm._follow = false;
+            }
         }
     }
 
