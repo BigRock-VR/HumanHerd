@@ -17,7 +17,6 @@ public class Panino : MonoBehaviour
         {
             _player = other.gameObject;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
-            print("Distanza = " + _distance);
             _counter += Time.deltaTime;
 
             transform.position = Vector3.Lerp(transform.position, _player.transform.GetChild(1).transform.position, _counter);
