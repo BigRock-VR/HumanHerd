@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         if (_sprintBool && _canRun && _vMove !=0 )
         {
             _counter += Time.deltaTime * _timeMultiplier;
-            _movSpeed += 0.1f;
+            _movSpeed += 0.08f;
 
             _lerpRot = _counter.Remap(0f, 3f, 0f, 1f);
             var x = Mathf.Lerp(0, 40, _lerpRot);
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         if ( !_sprintBool || !_canRun || _vMove == 0)
         {
             _counter -= Time.deltaTime * _timeMultiplier;
-            _movSpeed -= 0.1f;
+            _movSpeed -= 0.08f;
 
             if (_counter > 0)
             {
@@ -193,7 +193,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.SetParent(other.transform);
             GameManager._gm._gameOver = true;
-
         }
     }
 
