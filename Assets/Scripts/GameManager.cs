@@ -80,27 +80,26 @@ public class GameManager : MonoBehaviour
     }
 
     //testsheep
-    public Transform ClosestOmino(Transform from)
-    {            
-        // remember 5 november
+    public Transform ClosestOmino(GameObject from)
+    {       
+        
         var minDistance = float.MaxValue;
-        Transform humanInst = from;
+        
+        Transform humanInst = null;
         for (int i = 0; i <= _humans.Count-1; i++)
         {
-            float dist = Vector3.Distance(_humans[i].transform.position, from.position);
-            
-            if (dist < minDistance)
+            if (_humans[i] != null && _humans[i] != from)
             {
-                minDistance = dist;
-               humanInst = _humans[i].transform;
-            }
-            if(i==_humans.Count-1)
-            {
-                print("distanza winner : " + dist);
-                return humanInst;
+                float dist = Vector3.Distance(_humans[i].transform.position, from.transform.position);
+
+                if (dist < minDistance)
+                {
+                    minDistance = dist;
+                    humanInst = _humans[i].transform;
+                }
             }
         }
-        return null;
+        return humanInst;
     }
 
     void GameTimer()
@@ -114,6 +113,9 @@ public class GameManager : MonoBehaviour
             {
                 _timer = 0f;
                 _timeOver = true;
+
+                vCam.gameObject.SetActive(false);
+
             }
         }
     }
@@ -138,7 +140,6 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(_startGame) && !gameStarted)
         {
-            print("space");
             gameStarted = true;
             _cam1.SetActive(false);
             _cam2.SetActive(false);
@@ -149,7 +150,6 @@ public class GameManager : MonoBehaviour
         }
         else if (Input.anyKey && !Input.GetKey(_startGame) && !gameStarted)
         {
-            print("any");
             gameStarted = true;
             _cam1.SetActive(false);
             _startCounter = true;
@@ -178,6 +178,7 @@ public class GameManager : MonoBehaviour
         {
             _cam3.SetActive(false);
             _playerSpawned = false;
+            
             SpawnPlayer();
         }
     }

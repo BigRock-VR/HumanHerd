@@ -15,7 +15,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
   m_FogMode: 1
   m_FogDensity: 0
@@ -180,7 +180,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22698287}
-  m_LocalRotation: {x: 0.016622717, y: 0.982896, z: -0.11324763, w: 0.14427145}
+  m_LocalRotation: {x: 0.12250955, y: 0.70372695, z: 0.1252125, w: -0.6885359}
   m_LocalPosition: {x: 6.4, y: 68.1, z: 161.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -554,7 +554,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308866876}
-  m_LocalRotation: {x: 0.29116303, y: -0.64765054, z: 0.29493687, w: 0.6393631}
+  m_LocalRotation: {x: -0.08571987, y: -0.7003157, z: -0.08533051, w: 0.7035118}
   m_LocalPosition: {x: 148, y: 207, z: 122.489944}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
@@ -2239,7 +2239,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519423197}
-  m_LocalRotation: {x: -0.0037450742, y: 0.9846961, z: -0.1740669, w: 0.0077710464}
+  m_LocalRotation: {x: -0.0037450704, y: 0.9846961, z: -0.1740669, w: 0.0077710673}
   m_LocalPosition: {x: -0.6020609, y: 12.424998, z: 34.049995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2392,7 +2392,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 1.43e-43, w: 1.44e-43}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -29176,7 +29176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172668899516575}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -155, y: 4.44, z: 51.3}
+  m_LocalPosition: {x: -155, y: 4.44, z: 53.76}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 2121210234101978919}
@@ -43139,7 +43139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &8296172668899516576
 Animator:
   serializedVersion: 3

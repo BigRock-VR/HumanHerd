@@ -5,73 +5,96 @@ using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float _vMove, _hMove;
+
+    [Header("GameControls Setups")]
+    [SerializeField]
+    [Range(1, 3)]
+    int playMode = 3;
+
+    [Space]
+
+    [Header("General Movement Param")]
+    public float _movSpeed = 8f;
 
     [SerializeField]
-    public float _movSpeed = 8f;
+    float _rotSpeed = 150f;
+
     [SerializeField]
-    private float _rotSpeed = 150f;
+    float _runSpeedMultiplier = 0.4f;
+    private float runSpeedMultiplier;
+
     [SerializeField]
-    public float _runInertiaMultiplier = 2f;
+    float _movSpeedMultiplier = 1;
+    private float movSpeedMultiplier;
+
     [SerializeField]
-    public float _movSpeedMultiplier = 0.2f;
-    [SerializeField]
-    private float maxSpeed = 20;
+    float _maxSpeed = 20;
+
+    [Space]
 
     //Inputs Variables
-    public KeyCode _pickUp;
-    public KeyCode _drop;
+    [SerializeField]
+    KeyCode _pickUp;
+    [SerializeField]
+    KeyCode _drop;
+    [SerializeField]
+    KeyCode _sprint;
 
-    public KeyCode _sprint;
+    private float _vMove, _hMove;
+
     private bool _sprintBool;
     private bool _inside;
     private bool _picked;
     private bool isRunning;
 
+    private Rigidbody rb;
+    private UIController uiController;
+
     //Panino
     private int _powerUpType;
     private float _paninoTimer;
-    public GameObject _powerUpComponent;
-    
     private GameObject[] _powerUps;
+    [Header("Component of Type Power UP")]
+    [SerializeField]
+    GameObject _powerUpComponent;
+    [Space]
 
     //Sprint
+    [Header("Time before being fatigued")]
+    [SerializeField]
+    float _timeMultiplier;
     public float _counter;
-    public float _timeMultiplier;
     public bool _canRun = true;
-    private Rigidbody rb;
+
+    private float modifier;
 
     //AirBlobVariables
     private float _lerpFly;
     private bool _direction;
-    public float _blobMultiplier = 1f;
+    private float _blobMultiplier = 0.4f;
 
     //RotationBySpeedVariables
     private float _lerpRot;
 
     //DeathVariables
-    float _lerpMultiplier = 0.05f;
-    float _lerpPos;
-    public GameObject _spaceShip;
+    private float _lerpMultiplier = 0.05f;
+    private float _lerpPos;
+    private GameObject _spaceShip;
 
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
+        uiController = FindObjectOfType<UIController>();
         rb = transform.GetComponent<Rigidbody>();
         _powerUps = new GameObject[2];
         _spaceShip = GameObject.FindGameObjectWithTag("SpaceShip");
         PopulateArray();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!GameManager._gm._gameOver)
         {
-            Movement();
+            MovementMain();
             Flying();
         }
         BoolSetting();
@@ -79,86 +102,148 @@ public class PlayerController : MonoBehaviour
         GameOver();
     }
 
-    private void Movement()
+    void MovementMain()
     {
         _hMove = Input.GetAxis("Horizontal");
         _vMove = Input.GetAxis("Vertical");
 
-        //transform.Rotate(0f, _hMove * _rotSpeed * Time.deltaTime, 0f);
-        //transform.Translate(0f, 0f, _vMove * _movSpeed * _movSpeedMultiplier * Time.deltaTime);
-
-
-        if(_hMove != 0)
+        if (playMode == 1)
         {
-            transform.Translate(Vector3.right * _hMove * _movSpeed / 100);
+            runSpeedMultiplier = _runSpeedMultiplier;
+            movSpeedMultiplier = _movSpeedMultiplier;
+            Move_1();
         }
-        //Sprint inertia
-        if(_vMove != 0)
+        else if (playMode == 2)
         {
-            var dir = transform.TransformDirection(Vector3.forward);
-            float modifier;
-
-            if(!isRunning)
-            {
-                modifier = _movSpeedMultiplier;
-            }
-            else
-            {
-                modifier = _runInertiaMultiplier;
-            }
-
-            rb.AddForce(dir * _vMove * _movSpeed / modifier, ForceMode.Impulse);
+            Move_2();
         }
-        //Character AIM at mouse
-        int mask = ~(1 << 11);
-        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, mask);
-        transform.LookAt(hit.point);
-
-
-
-        if (_sprintBool && _canRun && _vMove !=0 )
+        else if (playMode == 3)
+        {
+            runSpeedMultiplier = (_runSpeedMultiplier / 2) * 10;
+            movSpeedMultiplier = (_movSpeedMultiplier / 10) * 80;
+            Move_3(false);
+        }
+        SprintCheck();
+    }
+    void SprintCheck()
+    {
+        if (_sprintBool && _canRun)
         {
             isRunning = true;
 
-            if(rb.velocity.magnitude <= maxSpeed)
+            _counter += Time.deltaTime * _timeMultiplier;
+            _movSpeed += 0.08f;
+
+            if (uiController._boostSpeedSlider.value >= uiController._boostSpeedSlider.maxValue)
             {
-                
-                _counter += Time.deltaTime * _timeMultiplier;
-                _movSpeed += 0.08f;
+                rb.Sleep();
+                _canRun = false;
+            }
 
-                //_lerpRot = _counter.Remap(0f, 3f, 0f, 1f);
-                //var x = Mathf.Lerp(0, 40, _lerpRot);
-                //transform.GetChild(0).transform.localRotation = Quaternion.Euler (x, transform.rotation.y, transform.rotation.z);
-
+            if (rb.velocity.magnitude <= _maxSpeed)
+            {
+                if (playMode == 2)
+                {
+                    Move_3(true);
+                }
                 if (_counter >= 3f)
                 {
+                    rb.Sleep();
                     _canRun = false;
                 }
             }
         }
-        if (!_sprintBool || !_canRun || _vMove == 0)
+
+        if (!_sprintBool || !_canRun)
         {
             isRunning = false;
 
-                _counter -= Time.deltaTime * _timeMultiplier;
-                _movSpeed -= 0.08f;
+            _counter -= Time.deltaTime * _timeMultiplier;
+            _movSpeed -= 0.08f;
 
-                if (_counter > 0)
+            if (_counter >= 0)
+            {
+                if (playMode == 2)
                 {
-                    //_lerpRot = _counter.Remap(0f, 3f, 0f, 1f);
-                    //var x = Mathf.Lerp(0, 40, _lerpRot);
-                    //transform.GetChild(0).transform.localRotation = Quaternion.Euler(x, transform.rotation.y, transform.rotation.z);
+                    Move_3(true);
                 }
-                if (_counter <= 0f)
-                {
-                    _movSpeed = 5f;
-                    _counter = 0f;
-                    _canRun = true;
-                }
-            
+            }
+            if (_counter <= 0f)
+            {
+                _movSpeed = 8f;
+                _counter = 0f;
+                _canRun = true;
+            }
+        }
+
+        if (!isRunning)
+        {
+            modifier = movSpeedMultiplier;
+        }
+        else
+        {
+            modifier = runSpeedMultiplier;
         }
     }
+    void Move_1()
+    {
+        //Aim var
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Plane plane = new Plane(Vector3.up, Vector3.zero);
+        float distance;
 
+        //Move var
+        float modifier;
+
+        //Aim functions
+        if (plane.Raycast(ray, out distance))
+        {
+            Vector3 target = ray.GetPoint(distance);
+            Vector3 direction = target - transform.position;
+            float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            transform.localRotation = Quaternion.Euler(0, rotation, 0);
+        }
+
+        //Move functions
+        if (!isRunning)
+        {
+            modifier = movSpeedMultiplier;
+        }
+        else
+        {
+            modifier = runSpeedMultiplier;
+        }
+
+        if (_hMove != 0)
+        {
+            rb.AddForce(Vector3.right * _hMove * _movSpeed / modifier, ForceMode.Impulse);
+        }
+        if (_vMove != 0)
+        {
+            rb.AddForce(Vector3.forward * _vMove * _movSpeed / modifier, ForceMode.Impulse);
+        }
+
+
+    }
+    void Move_2()
+    {
+
+    }
+    void Move_3(bool rotate)
+    {
+
+
+        transform.Rotate(0f, _hMove * _rotSpeed * Time.deltaTime, 0f);
+        transform.Translate(0f, 0f, _vMove * _movSpeed * modifier * movSpeedMultiplier * Time.deltaTime);
+
+        if (rotate)
+        {
+            _lerpRot = _counter.Remap(0f, 3f, 0f, 1f);
+            var x = Mathf.Lerp(0, 40, _lerpRot);
+            transform.GetChild(0).transform.localRotation = Quaternion.Euler(x, transform.rotation.y, transform.rotation.z);
+            rotate = false;
+        }
+    }
     void Flying()
     {
         if (!_direction)
@@ -178,18 +263,17 @@ public class PlayerController : MonoBehaviour
             }
         }
         var y = Mathf.Lerp(2f, 3f, _lerpFly);
-        transform.position = Vector3.Lerp (transform.position, new Vector3(transform.position.x, y, transform.position.z), _lerpFly);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, y, transform.position.z), _lerpFly);
     }
-
     void PopulateArray()
     {
         for (int i = 0; i < _powerUps.Length; i++)
         {
             _powerUps[i] = _powerUpComponent.transform.GetChild(i).gameObject;
         }
-        
+
     }
-    private void BoolSetting()
+    void BoolSetting()
     {
         if (Input.GetKeyDown(_sprint))
         {
@@ -201,26 +285,26 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    private void PaninoPicked()
+    void PaninoPicked()
     {
         if (GameManager._gm._follow && _powerUpType == 0)
         {
             _powerUps[0].SetActive(true);
             _paninoTimer += Time.deltaTime;
 
-            if(_paninoTimer >= 10)
+            if (_paninoTimer >= 10)
             {
                 _powerUps[0].SetActive(false);
                 _paninoTimer = 0f;
                 GameManager._gm._follow = false;
             }
-        }if (GameManager._gm._follow && _powerUpType == 1)
+        }
+        if (GameManager._gm._follow && _powerUpType == 1)
         {
-
             _powerUps[1].SetActive(true);
             _paninoTimer += Time.deltaTime;
 
-            if(_paninoTimer >= 10)
+            if (_paninoTimer >= 10)
             {
                 _powerUps[1].SetActive(false);
                 _paninoTimer = 0f;
@@ -228,7 +312,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
     void GameOver()
     {
         if (GameManager._gm._timeOver && !_inside)
@@ -248,7 +331,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Tornado"))
         {
@@ -257,7 +340,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Panino"))
         {
@@ -268,7 +351,6 @@ public class PlayerController : MonoBehaviour
         {
             GameManager._gm._pickedUp = true;
             _powerUpType = 1;
-
         }
 
         if (other.CompareTag("Tornado"))
@@ -288,8 +370,7 @@ public class PlayerController : MonoBehaviour
             _inside = true;
         }
     }
-
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("SpaceShip"))
         {

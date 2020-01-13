@@ -50,7 +50,7 @@ public class OminiTaken : MonoBehaviour
                     {
 
                         GameManager._gm.ScoreCounter();
-                        GameManager._gm._humans.RemoveAt(0);
+                        GameManager._gm._humans.Remove(gameObject);
                         _stopLerp2++;
                         Destroy(gameObject);
                         
@@ -83,7 +83,7 @@ public class OminiTaken : MonoBehaviour
             transform.SetParent(other.transform);
             GetComponent<SheepMovement>().enabled = false;
             GetComponent<NavMeshAgent>().enabled = false;
-            GameManager._gm._humans.RemoveAt(0);
+            GameManager._gm._humans.Remove(gameObject);
         }
     }
 }

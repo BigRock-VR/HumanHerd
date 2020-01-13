@@ -24,6 +24,7 @@ public class SheepMovement : MonoBehaviour
     // Test Sheep
     [SerializeField]
     bool doSheep;
+    Transform closestOmino;
 
     //Variabili Panino
     List<GameObject> Panino = new List<GameObject>();
@@ -36,7 +37,6 @@ public class SheepMovement : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         _agent = GetComponent<NavMeshAgent>();
         PopulateArray();
-        StartCoroutine("OminiHandler");
     }
 
     // Update is called once per frame
@@ -53,34 +53,57 @@ public class SheepMovement : MonoBehaviour
             _player = GameObject.FindGameObjectWithTag("Player");
         }
         
-        if (_player != null && !doSheep)
+        if (_player != null)
         {
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
             //RunAWAY
             if (_distance < _enemyDistanceRun && !GameManager._gm._follow)
             {
-                
                 if (_agent.enabled == true)
                 {
                     _counter = 0;
                     StopCoroutine("DeathTime");
-                    if (_distance < _enemyCriticDistance)
+                    if (doSheep)
                     {
-                        _agent.speed = _player.GetComponent<PlayerController>()._movSpeed * 2f;
-                        _agent.acceleration = 15f;
-                        doSheep = true;
-                    }
-                    if (_distance > _enemyCriticDistance)
-                    {
-                        _agent.speed = _player.GetComponent<PlayerController>()._movSpeed;
-                        _agent.acceleration = 7f;
-                        doSheep = false;
+                        closestOmino = GameManager._gm.ClosestOmino(gameObject);
 
+                        Vector3 dirToPlayer = transform.position - _player.transform.position;
+                        Vector3 newPos = dirToPlayer + closestOmino.position;
+
+                        if (_distance < _enemyCriticDistance && newPos != null)
+                        {
+                            _agent.speed = _player.GetComponent<PlayerController>()._movSpeed * 2f;
+                            _agent.acceleration = 15f;
+                            _agent.SetDestination(newPos);
+                        }
+                        if (_distance > _enemyCriticDistance && newPos != null)
+                        {
+                            _agent.speed = _player.GetComponent<PlayerController>()._movSpeed;
+                            _agent.acceleration = 7f;
+                            _agent.SetDestination(newPos);
+                        }
                     }
-                    Vector3 dirToPlayer = transform.position - _player.transform.position;
-                    Vector3 newPos = transform.position + dirToPlayer;
-                    _agent.SetDestination(newPos);
+                    else
+                    {
+                        Vector3 dirToPlayer = transform.position - _player.transform.position;
+                        Vector3 newPos = transform.position + dirToPlayer;
+                        if (_distance < _enemyCriticDistance)
+                        {
+                            _agent.speed = _player.GetComponent<PlayerController>()._movSpeed * 2f;
+                            _agent.acceleration = 15f;
+
+                            _agent.SetDestination(newPos);
+                            doSheep = true;
+                        }
+                        if (_distance > _enemyCriticDistance)
+                        {
+                            _agent.speed = _player.GetComponent<PlayerController>()._movSpeed;
+                            _agent.acceleration = 7f;
+
+                            _agent.SetDestination(newPos);
+                        }
+                    }
                 }
             }
             if (_distance < _enemyDistanceRun && GameManager._gm._follow)
@@ -96,8 +119,10 @@ public class SheepMovement : MonoBehaviour
 
                     Vector3 newPos = _player.transform.position;
                     _agent.SetDestination(newPos);
-
                 }
+            }if(_distance > _enemyDistanceRun)
+            {
+                doSheep = false;
             }
         }
     }
@@ -146,7 +171,7 @@ public class SheepMovement : MonoBehaviour
         if (GameManager._gm._timerStarts)
         {
             yield return new WaitForSeconds(15);
-            GameManager._gm._humans.RemoveAt(0);
+            GameManager._gm._humans.Remove(gameObject);
             _coroutine = false;
             Destroy(gameObject);
         }
@@ -157,25 +182,6 @@ public class SheepMovement : MonoBehaviour
         }
     }
 
-    //testsheep
-    IEnumerator OminiHandler()
-    {
-        yield return new WaitForSeconds(1);
-        print("enum working");
-        if(doSheep)
-        {
-            GameManager._gm.ClosestOmino(transform);
-            StartCoroutine("OminiHandler");
-            doSheep = false;
-            print("if running, should regroup");
-        }
-        else
-        {
-            print("still checking");
-            StartCoroutine("OminiHandler");
-        }
-        yield return null;
-    }
 
     private void OnTriggerStay(Collider other)
     {
